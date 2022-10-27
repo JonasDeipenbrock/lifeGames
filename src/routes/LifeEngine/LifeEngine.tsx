@@ -1,4 +1,4 @@
-const LifesGame = () => {
+const LifeEngine = () => {
     return <div>Lifes Game</div>;
 };
-export default LifesGame;
+export default LifeEngine;

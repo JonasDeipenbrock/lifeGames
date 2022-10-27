@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
 import "./index.css";
 import GameOfLife from "./routes/GameOfLife/GameOfLife";
-import LifesGame from "./routes/LifeEngine/LifeEngine";
+import LifeEngine from "./routes/LifeEngine/LifeEngine";
 import Root from "./routes/Root";
 
 const router = createBrowserRouter([
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
                 element: <GameOfLife />,
             },
             {
-                path: "/lifesGame",
-                element: <LifesGame />,
+                path: "/lifeEngine",
+                element: <LifeEngine />,
             },
         ],
     },
