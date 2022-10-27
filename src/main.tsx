@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./error-page";
+import "./index.css";
 import GameOfLife from "./routes/GameOfLife/GameOfLife";
-import LifesGame from "./routes/LifesGame/LifesGames";
+import LifesGame from "./routes/LifeEngine/LifeEngine";
 import Root from "./routes/Root";
 
 const router = createBrowserRouter([
