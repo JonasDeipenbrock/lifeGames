@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
 const useCanvas = (
     render: (ctx: CanvasRenderingContext2D) => void,
@@ -48,7 +48,7 @@ const useCanvas = (
 
     useEffect(() => {
         const canvas = canvasRef.current as any as HTMLCanvasElement;
-        const context = canvas.getContext("2d")!;
+        const context = canvas.getContext('2d')!;
 
         let animationFrameId: number;
 
@@ -66,27 +66,6 @@ const useCanvas = (
             animationFrameId = window.requestAnimationFrame(mainLoop);
         };
         mainLoop(0);
-
-        // let last: number;
-        // let accumulatedTime = 0;
-
-        // const render = (now: number) => {
-        //     if (last) {
-        //         accumulatedTime += (now - last) / 1000;
-
-        //         if (accumulatedTime > deltaTime) {
-        //             accumulatedTime = 1;
-        //         }
-
-        //         while (accumulatedTime > deltaTime) {
-        //             innerUpdate(context, canvas);
-        //             accumulatedTime -= deltaTime;
-        //         }
-        //     }
-        //     last = now;
-        //     animationFrameId = window.requestAnimationFrame(render);
-        // };
-        // window.requestAnimationFrame(render);
 
         return () => {
             window.cancelAnimationFrame(animationFrameId);
