@@ -4,7 +4,7 @@ const useCanvas = (
     render: (ctx: CanvasRenderingContext2D) => void,
     update: (ctx: CanvasRenderingContext2D) => void
 ) => {
-    const canvasRef = useRef(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
 
     // const resizeCanvasToDisplaySize = (
     //     context: CanvasRenderingContext2D,

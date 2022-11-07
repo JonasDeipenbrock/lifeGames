@@ -1,20 +1,28 @@
 export class World {
+    /**
+     * number of cells on y axis
+     */
     private height: number;
+    /**
+     * number of cells on x axis
+     */
     private width: number;
     private cellSize = 50;
     private cells: Array<boolean>;
     private paused = true;
 
+    /**
+     *
+     * @param width number of cells on x axis
+     * @param height number of cells on y axis
+     */
     constructor(width: number, height: number) {
         // this.width = width / this.cellSize;
         // this.height = height / this.cellSize;
-        this.width = 7;
-        this.height = 7;
+        this.width = width;
+        this.height = height;
 
-        this.cells = new Array(
-            // (height / this.cellSize - 2) * (width / this.cellSize)
-            7 * 7
-        ).fill(false);
+        this.cells = new Array(this.width * this.height).fill(false);
     }
 
     updateOnce(forceUpdate = false) {
@@ -22,10 +30,7 @@ export class World {
             return;
         }
 
-        const nextGeneration = new Array(
-            // (height / this.cellSize - 2) * (width / this.cellSize)
-            7 * 7
-        ).fill(false);
+        const nextGeneration = new Array(this.width * this.height).fill(false);
 
         for (let i = 0; i < this.width; i++) {
             for (let j = 0; j < this.height; j++) {
@@ -80,17 +85,7 @@ export class World {
     }
 
     setCells() {
-        this.cells = new Array(
-            // (height / this.cellSize - 2) * (width / this.cellSize)
-            7 * 7
-        ).fill(false);
-
-        // this.cells[0 * this.width + 0] = true;
-        this.cells[0 * this.width + 1] = true;
-        this.cells[1 * this.width + 2] = true;
-        this.cells[2 * this.width + 0] = true;
-        this.cells[2 * this.width + 1] = true;
-        this.cells[2 * this.width + 2] = true;
+        this.cells = new Array(this.width * this.height).fill(false);
     }
 
     draw(ctx: CanvasRenderingContext2D) {
@@ -106,7 +101,7 @@ export class World {
                 ctx.arc(
                     i * this.cellSize + this.cellSize / 2,
                     j * this.cellSize + this.cellSize / 2,
-                    20,
+                    this.cellSize / 2,
                     0,
                     2 * Math.PI
                 );
@@ -121,5 +116,20 @@ export class World {
 
     unpause() {
         this.paused = false;
+    }
+
+    setWidth(width: number) {
+        this.width = width;
+        //TODO copy array content over correctly
+    }
+
+    handleClick(event: MouseEvent) {
+        console.log(event.x, event.clientX, event.offsetX);
+        const x = Math.ceil(event.offsetX / this.cellSize) - 1;
+        const y = Math.ceil(event.offsetY / this.cellSize) - 1;
+        console.log(x, y);
+
+        this.cells[x * this.width + y] = !this.cells[x * this.width + y];
+        console.log(this.cells);
     }
 }
