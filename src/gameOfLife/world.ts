@@ -7,7 +7,7 @@ export class World {
      * number of cells on x axis
      */
     private width: number;
-    private cellSize = 50;
+    private cellSize: number;
     private cells: Array<boolean>;
     private paused = true;
 
@@ -15,12 +15,12 @@ export class World {
      *
      * @param width number of cells on x axis
      * @param height number of cells on y axis
+     * @param cellSize size of a single cell
      */
-    constructor(width: number, height: number) {
-        // this.width = width / this.cellSize;
-        // this.height = height / this.cellSize;
+    constructor(width: number, height: number, cellSize = 50) {
         this.width = width;
         this.height = height;
+        this.cellSize = cellSize;
 
         this.cells = new Array(this.width * this.height).fill(false);
     }

@@ -3,11 +3,11 @@ import { World } from '../../gameOfLife/world';
 import useCanvas from '../../hooks/useCanvas';
 
 const GameOfLife = () => {
-    const [width, setWidth] = useState(20);
-    const [height, setHeight] = useState(15);
-    const [cellSize, setCellSize] = useState(50);
+    const [width, setWidth] = useState(100);
+    const [height, setHeight] = useState(50);
+    const [cellSize, setCellSize] = useState(15);
 
-    const world = useRef<World>(new World(width, height));
+    const world = useRef<World>(new World(width, height, cellSize));
 
     const draw = (ctx: CanvasRenderingContext2D) => {
         world.current.draw(ctx);
